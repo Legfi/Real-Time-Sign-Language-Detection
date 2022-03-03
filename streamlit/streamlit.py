@@ -19,7 +19,7 @@ from keras.callbacks import ReduceLROnPlateau
 st.write("""#Insert text here""")
 button = st.button('Start Model')
 
-filepath = '/Users/fyra/github/Real-Time-Sign-Language-Detection/streamlit/sign_mnist_cnn_20_Epochs.h5
+filepath = 'C:/Users/dadme/Desktop/Data science/sign language project/Test/sign_mnist_cnn_20_Epochs.h5'
 
 model = keras.models.load_model(filepath)
 

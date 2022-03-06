@@ -16,7 +16,7 @@ def my_streamlit():
     st.title("'Everyone has a Chance' Algozobi")
     
     # Background image
-    image = Image.open('Is-American-Sign-Language-ASL-Universal.jpg')
+    image = Image.open('streamlit/Is-American-Sign-Language-ASL-Universal.jpg')
     st.image(image, caption="Sign Language for everyone!", use_column_width=True)
 
     #informatin for user

@@ -9,3 +9,4 @@ seaborn
 tensorflow
 streamlit
 pip
+streamlit-webrtc

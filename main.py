@@ -38,7 +38,7 @@ def my_streamlit():
 
     #informatin for user
     st.write("""### This is a school project helping pueple who use Sign Language. Using this app you can easily interpret sign language to English without needing a translater and only using machine learning...""")
-    st.write("""### Our model is trained by this data : """)
+    st.subheader('Our application has 2 versions:')
     st.write("""#### In version 1 you can translate images of sign language. You don't have any photo? No problem. You can use our version 2 and use your camera and translate sign language. you can pick which version you want to use on the sidebar! """)
     
     purpose = st.sidebar.selectbox("which version would you like to use?",("Version1", "Version2"))

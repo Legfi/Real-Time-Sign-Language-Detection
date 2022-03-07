@@ -30,7 +30,7 @@ def reshape_image(img):
 def my_streamlit():
     
     #Title
-    st.title("'Everyone has a Chance' Algozobi")
+    st.title("'Everyone has a Chance'")
     
     # Background image
     image = Image.open('American-Sign-Language-ASL-Universal.jpg')

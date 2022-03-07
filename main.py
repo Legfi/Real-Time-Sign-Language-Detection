@@ -33,7 +33,7 @@ def my_streamlit():
     st.title("'Everyone has a Chance' Algozobi")
     
     # Background image
-    image = Image.open('Is-American-Sign-Language-ASL-Universal.jpg')
+    image = Image.open('American-Sign-Language-ASL-Universal.jpg')
     st.image(image, caption="Sign Language for everyone!", use_column_width=True)
 
     #informatin for user
@@ -51,7 +51,7 @@ def my_streamlit():
         Demo = st.button("Demo")
         if Demo == True:
             Stop = st.button("Stop Demo")
-            file_ = open("-sign-lang-Ahmed-El-Akkouri.ipynb-data-set-sign-language-Visual-Studio-Code-2022-02-22-12-18-04.gif", "rb")
+            file_ = open("sign-language-Visual-Studio-Code-2022-02-22-12-18-04.gif", "rb")
             contents = file_.read()
             data_url = base64.b64encode(contents).decode("utf-8")
             file_.close()
@@ -94,7 +94,7 @@ def my_streamlit():
         Demo = st.button("Demo")
         if Demo == True:
             Stop = st.button("Stop Demo")
-            file_ = open("OpenCv.gif", "rb")
+            file_ = open("Real time classification.gif", "rb")
             contents = file_.read()
             data_url = base64.b64encode(contents).decode("utf-8")
             file_.close()

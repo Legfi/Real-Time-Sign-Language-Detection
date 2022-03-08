@@ -108,7 +108,7 @@ def my_streamlit():
         
         #checkbox for starting the application
         """Right now we are working on this version of our app and fixing issues giving access to the local camera of our users."""
-        """Click on start button and begin interprating:"""
+        """Click on start button and begin interprating(This can take few sec! please w8!):"""
         class videoprocessor:
             def recv(self, frame):
                 frm = frame.to_ndarray(format="bgr24")

@@ -2,10 +2,13 @@
 
 from PIL import Image
 import cv2
-import streamlit as st
 import tensorflow as tf
 import numpy as np
 import base64
+import streamlit as st
+from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, RTCConfiguration
+import av
+import threading
 
 # Functions
 @st.cache(allow_output_mutation=True)
@@ -108,6 +111,13 @@ def my_streamlit():
         """Click on start button and begin interprating:"""
         start_button = st.button('Start')
         stop_button = st.button('stop')
+        class videoprocessor:
+            def recv(self, frame):
+                frm = frame.to_ndarray(format="bgr24")
+                return av.VideoFrame.from_ndarray(frm, format="bgr24")
+        
+        webrtc_streamer(key="key", video_processor_factory=videoprocessor)
+
 
         #run = st.checkbox('Start')
         FRAME_WINDOW = st.image([])

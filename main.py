@@ -109,9 +109,6 @@ def my_streamlit():
         #checkbox for starting the application
         """Right now we are working on this version of our app and fixing issues giving access to the local camera of our users."""
         """Click on start button and begin interprating:"""
-        #start_button = st.button('Start')
-        #stop_button = st.button('stop')
-
         class videoprocessor:
             def recv(self, frame):
                 frm = frame.to_ndarray(format="bgr24")
@@ -122,6 +119,10 @@ def my_streamlit():
 					{"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 					)
 	    )
+        
+        start_button = st.button('Start')
+        stop_button = st.button('stop')
+
         #run = st.checkbox('Start')
         FRAME_WINDOW = st.image([])
         cam = cv2.VideoCapture(0)

@@ -92,6 +92,17 @@ def my_streamlit():
     #Version2 of the App
     if purpose == "Version2":
 
+        class videoprocessor:
+            def recv(self, frame):
+                frm = frame.to_ndarray(format="bgr24")
+                return av.VideoFrame.from_ndarray(frm, format="bgr24")
+        
+        webrtc_streamer(key="key", video_processor_factory=videoprocessor,
+				rtc_configuration=RTCConfiguration(
+					{"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+					)
+	)
+
         #Demo of version2
         Demo = st.button("Demo")
         if Demo == True:
@@ -111,13 +122,6 @@ def my_streamlit():
         """Click on start button and begin interprating:"""
         start_button = st.button('Start')
         stop_button = st.button('stop')
-        class videoprocessor:
-            def recv(self, frame):
-                frm = frame.to_ndarray(format="bgr24")
-                return av.VideoFrame.from_ndarray(frm, format="bgr24")
-        
-        webrtc_streamer(key="key", video_processor_factory=videoprocessor)
-
 
         #run = st.checkbox('Start')
         FRAME_WINDOW = st.image([])

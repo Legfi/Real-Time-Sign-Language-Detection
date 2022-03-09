@@ -6,9 +6,8 @@ import tensorflow as tf
 import numpy as np
 import base64
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, RTCConfiguration
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration
 import av
-import threading
 
 # Functions
 @st.cache(allow_output_mutation=True)
@@ -91,7 +90,7 @@ def my_streamlit():
                 
     #Version2 of the App
     if purpose == "Version2":
-
+        model1 = load_model()
         #Demo of version2
         Demo = st.button("Demo")
         if Demo == True:
@@ -107,11 +106,19 @@ def my_streamlit():
                 Demo == False
         
         #checkbox for starting the application
-        """Right now we are working on this version of our app and fixing issues giving access to the local camera of our users."""
-        """Click on start button and begin interprating(This can take few sec! please w8!):"""
+        """We had some issues during the deploymet of this app becouse Opencv doesn't let our app access the local camera of our users. But our genius developer came with the idea of using another library which called "webrtc"! Right now we are working to give even better service to our users using object detection models"""
+        """Click on start button and begin interprating(This might take a few sec! please w8!):"""
         class videoprocessor:
             def recv(self, frame):
                 frm = frame.to_ndarray(format="bgr24")
+                frm = cv2.flip(frm, 1)
+                roi = frm[100:400, 320:620]
+                roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+                roi = cv2.resize(roi, (28, 28), interpolation = cv2.INTER_AREA)
+                cv2.rectangle(frm, (320, 100), (620, 400), (255,0,0), 5)
+                roi = roi.reshape(1,28,28,1)
+                result = str(np.argmax(model1.predict(roi, 1, verbose = 0)[0]))
+                cv2.putText(frm, getLetter(result), (300 , 100), cv2.FONT_HERSHEY_COMPLEX, 2, (0, 255, 0), 2)
                 return av.VideoFrame.from_ndarray(frm, format="bgr24")
         
         webrtc_streamer(key="key", video_processor_factory=videoprocessor,
@@ -119,39 +126,6 @@ def my_streamlit():
 					{"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 					)
 	    )
-        
-        start_button = st.button('Start')
-        stop_button = st.button('stop')
-
-        #run = st.checkbox('Start')
-        FRAME_WINDOW = st.image([])
-        cam = cv2.VideoCapture(0)
-        st.set_option('deprecation.showfileUploaderEncoding', False)
-        
-        #loading the model
-        model1 = load_model()
-        while start_button == True:
-
-            ret, frame = cam.read()
-            if not ret:
-                print('!')
-                break 
-            frame = cv2.flip(frame, 1)
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            roi = frame[100:400, 320:620]
-            roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-            roi = cv2.resize(roi, (28, 28), interpolation = cv2.INTER_AREA)
-            copy = frame.copy()
-            cv2.rectangle(copy, (320, 100), (620, 400), (255,0,0), 5)
-            roi = roi.reshape(1,28,28,1) 
-
-            result = str(np.argmax(model1.predict(roi, 1, verbose = 0)[0]))
-            cv2.putText(copy, getLetter(result), (300 , 100), cv2.FONT_HERSHEY_COMPLEX, 2, (0, 255, 0), 2)
-            FRAME_WINDOW.image(copy)
-        if stop_button:
-            st.balloons()
-        
-
 
 #Create function to match label to letter
 def getLetter(result):

@@ -106,7 +106,7 @@ def my_streamlit():
                 Demo == False
         
         #checkbox for starting the application
-        """We had some issues during the deploymet of this app becouse Opencv doesn't let our app access the local camera of our users. But our genius developer came with the idea of using another library which called "webrtc"! Right now we are working to give even better service to our users using object detection models"""
+        """We had some issues during the deploymet of this app becouse Opencv doesn't let our app access the local camera of our users. But our genius developers came with the idea of using another library which called "webrtc"! Right now we are working to give even better service to our users using object detection models"""
         """Click on start button and begin interprating(This might take a few sec! please w8!):"""
         class videoprocessor:
             def recv(self, frame):

@@ -77,15 +77,12 @@ def my_streamlit():
             col2.image(img, use_column_width=True)
             reshaped_image = reshape_image(img)
 
-            prediction = model1.predict(reshaped_image)
-            pred_list = list(prediction)
-            pred_list = [round(pred_list[0][i]) for i in range(24) ]
-            try:
-                pred = pred_list.index(1)
-                label = labels[pred]
+            prediction = model1.predict(reshaped_image)[0]
+            prediction_index = np.argmax(prediction)
+            if prediction[prediction_index ] > 0.9 :
+                label = labels[prediction_index]
                 st.write(f'The model predicts letter = {label}')
-                st.balloons()
-            except:
+            else:
                 st.write('Model foud no label match')
                 
     #Version2 of the App

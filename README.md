@@ -8,7 +8,7 @@ On version 2 user can classify sign language using camera and real time classifi
 for education perposes and only used Open cv for predicting diffrent frames)! 
 
 ## clone the repository
-
+Go to a folder of choice and open a terminal that can access git. Write "git clone https://github.com/Legfi/Real-Time-Sign-Language-Detection.git"
 ## Update environment with needed packages
 Browse to the git repo folder with the terminal. print "pip install -r requirements.txt"
 

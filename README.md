@@ -9,6 +9,12 @@ for education perposes and only used Open cv for predicting diffrent frames)!
 
 ## Clone the repository
 Go to a folder of choice and open a terminal that can access git. Write "git clone https://github.com/Legfi/Real-Time-Sign-Language-Detection.git"
+
+Ofcoures you can use github desktop if you wish to clone the repository in a easier way.
+## Create a conda environment
+If conda is installed with the environment path variables then it should work with only printing. Else open the Anaconda navigator and open a terminal from there.
+
+then type "conda create --name pythonenv python=3.9"
 ## Update environment with needed packages
 Browse to the git repo folder with the terminal. print "pip install -r requirements.txt"
 

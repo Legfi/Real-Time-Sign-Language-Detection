@@ -1,4 +1,4 @@
-# Real-Time-Sign-Language-Detection
+# Real Time Sign Language Detection
 ## Brief Summary:
 
 In this project we used deep learning for predicting sign language. 
